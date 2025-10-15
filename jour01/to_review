@@ -1,0 +1,9 @@
+&&= Operator
+||= Operator
+??= Operator
+
+The Spread (...) Operator
+
+The ... operator splits iterables into individual elements.
+
+In date object months are 0 to 11 (12 is january of next year)
