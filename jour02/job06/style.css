@@ -1,0 +1,30 @@
+body
+{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 15vh;
+    background-color: blue;
+}
+
+h1
+{
+    color:blue;
+    font-size: 3rem;
+    text-align: center;
+}
+
+div
+{
+    margin-left: 10vw;
+    width: 80vw;
+    height: 80vh;
+    background-color: aquamarine;
+}
