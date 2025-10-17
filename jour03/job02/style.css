@@ -1,0 +1,12 @@
+#placement-field
+{
+    border: 1px solid black;
+    width: 133 * 6px;
+    height: 400px;
+}
+
+#random-box
+{
+    width: 133 * 6px;
+    height: 400px;
+}
