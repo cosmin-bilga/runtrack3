@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <label for="pokemon-id">ID</label>
+    <input type="text" value="" name="id" id="pokemon-id" />
+    <label for="pokemon-nom">Nom</label>
+    <input type="text" value="" name="nom" id="pokemon-nom" />
+    <label for="pokemon-type">Type</label>
+    <select name="type" id="pokemon-type">
+      <option value="">None</option>
+    </select>
+    <button id="button">Filtrer</button>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="pokemon-list"></tbody>
+    </table>
+  </body>
+</html>
