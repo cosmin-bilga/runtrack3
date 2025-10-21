@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        value=""
+        required
+        minlength="5"
+      />
+      <p id="email-error" class="error"></p>
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value=""
+        required
+        minlength="8"
+      />
+      <p id="password-error" class="error"></p>
+      <input type="submit" value="Connect" id="submit" />
+    </form>
+  </body>
+</html>

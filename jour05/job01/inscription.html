@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <label for="nom">Nom</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        value=""
+        required
+        minlength="2"
+        maxlength="50"
+      />
+      <p id="nom-error" class="error"></p>
+      <label for="prenom">Prenom</label>
+      <input type="text" id="prenom" name="prenom" value="" />
+      <p id="prenom-error" class="error"></p>
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" value="" />
+      <p id="email-error" class="error"></p>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" value="" />
+      <p id="password-error" class="error"></p>
+      <label for="password-confirm">Password Confirm</label>
+      <input
+        type="password"
+        id="password-confirm"
+        name="password-confirm"
+        value=""
+        required
+      />
+      <p id="password-confirm-error" class="error"></p>
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" value="" />
+      <p id="address-error" class="error"></p>
+      <label for="postal-code">Postal Code</label>
+      <input type="text" id="postal-code" name="postal-code" value="" />
+      <p id="postal-code-error" class="error"></p>
+      <input type="submit" value="Connect" id="submit" />
+    </form>
+  </body>
+</html>

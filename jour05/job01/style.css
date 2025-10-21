@@ -1,0 +1,12 @@
+.error {
+  color: red;
+  background-color: rgb(247, 215, 215);
+}
+
+/* input:invalid {
+  border-color: red;
+} */
+
+.invalid {
+  border-color: red;
+}
