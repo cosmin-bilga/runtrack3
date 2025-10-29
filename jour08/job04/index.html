@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <header class="bg-blue-200 h-20">
+      <nav class="pt-7">
+        <ul class="flex align-center justify-around">
+          <li><a href="index.html" class="text-black font-bold">Accueil</a></li>
+          <li>
+            <a href="index.html" class="text-black font-bold">Inscription</a>
+          </li>
+          <li>
+            <a href="index.html" class="text-black font-bold">Connexion</a>
+          </li>
+          <li>
+            <a href="index.html" class="text-black font-bold">Rechercher</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form
+        class="w-[60vw] m-[15vw] p-[5vw] bg-blue-100 rounded-4xl flex flex-col shadow-xl shadow-gray-400"
+      >
+        <h1 class="text-center text-3xl font-extrabold mt-3">
+          Formulaire Inscription
+        </h1>
+        <p class="text-lg underline font-weight-200">Civilité:</p>
+        <div>
+          <input
+            class="font-size-2"
+            type="radio"
+            name="civilite"
+            id="madame"
+            value="madame"
+          />
+          <label for="madame" class="h-[5vh]"
+            >Mme.<img
+              class="h-[5vh] inline"
+              src="https://www.svgrepo.com/show/506194/female.svg"
+          /></label>
+        </div>
+        <div>
+          <input type="radio" name="civilite" id="monsieur" value="monsieur" />
+          <label for="monsieur" class="h-[5vh]"
+            >M.<img
+              class="h-[5vh] inline"
+              src="https://www.svgrepo.com/show/500613/male.svg"
+          /></label>
+        </div>
+        <label class="block h-[5vh] mb-2 mt-3" for="nom"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/497618/user.svg"
+          />Nom:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="text"
+          id="nom"
+          name="nom"
+        />
+        <label class="block h-[5vh] mb-2 mt-3" for="prenom"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/497618/user.svg"
+          />Prenom:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="text"
+          id="prenom"
+          name="prenom"
+        />
+        <label for="address" class="block h-[5vh] mb-2 mt-3"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/529027/home-1.svg"
+          />Addresse:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="text"
+          id="address"
+          name="address"
+        />
+        <label for="email" class="block h-[5vh] mb-2 mt-3"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/511921/email-1573.svg"
+          />Email:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="email"
+          id="email"
+          name="email"
+        />
+        <label for="password" class="block h-[5vh] mb-2 mt-3"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/502786/password-2.svg"
+          />Mot de passe:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="password"
+          id="password"
+          name="password"
+        />
+        <label for="password-confirm" class="block h-[5vh] mb-2 mt-3"
+          ><img
+            class="h-[5vh] inline"
+            src="https://www.svgrepo.com/show/502786/password-2.svg"
+          />Confirmation mot de passe:</label
+        >
+        <input
+          class="px-3 py-1 miw-w-60 border-2 rounded-2xl border-zinc-500 bg-white"
+          type="password-confirm"
+          id="password-confirm"
+          name="password-confirm"
+        />
+        <p class="text-lg mt-3 underline">Hobbies:</p>
+        <div>
+          <label for="informatique" class="h-[5vh]">Informatique</label>
+          <input
+            type="checkbox"
+            id="informatique"
+            name="informatique"
+            value="informatique"
+          />
+        </div>
+        <div>
+          <label for="voyages" class="h-[5vh]">Voyages</label>
+          <input type="checkbox" id="votages" name="voyages" value="voyages" />
+        </div>
+        <div>
+          <label for="sport">Sport</label>
+          <input type="checkbox" id="sport" name="sport" value="sport" />
+        </div>
+        <div>
+          <label for="lecture">Lecture</label>
+          <input type="checkbox" id="lecture" name="lecture" value="lecture" />
+        </div>
+        <input
+          class="block bg-gray-100 border border-gray-500 p-3 rounded-lg hover:bg-gray-200 w-30 self-center"
+          type="submit"
+          value="Valider"
+        />
+      </form>
+    </main>
+    <footer class="bg-black fixed bottom-0 left-0 right-0 p-2">
+      <nav>
+        <ul class="flex justify-around">
+          <li><a href="index.html" class="text-white font-bold">Accueil</a></li>
+          <li>
+            <a href="index.html" class="text-white font-bold">Inscription</a>
+          </li>
+          <li>
+            <a href="index.html" class="text-white font-bold">Connexion</a>
+          </li>
+          <li>
+            <a href="index.html" class="text-white font-bold">Rechercher</a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

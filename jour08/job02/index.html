@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <header class="bg-blue-200 h-20">
+        <nav class="pt-7">
+            <ul class="flex align-center justify-around">
+                <li><a href="index.html" class="text-black font-bold">Accueil</a></li>
+                <li><a href="index.html" class="text-black font-bold">Inscription</a></li>
+                <li><a href="index.html" class="text-black font-bold">Connexion</a></li>
+                <li><a href="index.html" class="text-black font-bold">Rechercher</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form>
+            <p>Civilité:</p>
+            <input type="radio" name="civilite" id="madame" value="madame">
+            <label for="madame">Mme.</label>
+            <input type="radio" name="civilite" id="monsieur" value="monsieur">
+            <label for="monsieur">M.</label>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom">
+            <label for="prenom">Prenom:</label>
+            <input type="text" id="prenom" name="prenom">
+            <label for="address">Addresse:</label>
+            <input type="text" id="address" name="address">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password">
+            <label for="password-confirm">Confirmation mot de passe:</label>
+            <input type="password-confirm" id="password-confirm" name="password-confirm">
+            <label for="voyages">Voyages</label>
+            <input type="checkbox" id="voyages" name="voyages" value="voyages">
+            <label for="informatique">Informatique</label>
+            <input type="checkbox" id="informatique" name="informatique" value="informatique">
+            <label for="sport">Sport</label>
+            <input type="checkbox" id="sport" name="sport" value="sport">
+            <label for="lecture">Lecture</label>
+            <input type="checkbox" id="lecture" name="lecture" value="lecture">
+            <input type="submit" value="Valider">
+        </form>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html">Inscription</a></li>
+                <li><a href="index.html">Connexion</a></li>
+                <li><a href="index.html">Rechercher</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
