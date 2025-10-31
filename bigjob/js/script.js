@@ -1,3 +1,12 @@
+// FLASH
+
+const flashMessage = document.getElementById("flash-message");
+if (flashMessage) {
+  if (window.sessionStorage.getItem("message"))
+    flashMessage.innerText = window.sessionStorage.getItem("message");
+  window.sessionStorage.setItem("message", "");
+}
+
 // MANIPULATION JSON
 
 async function getData(filepath) {
@@ -371,9 +380,20 @@ function displayUserTable() {
   }
 }
 
+const homePage = document.getElementById("home-page");
+if (homePage) {
+  if (
+    window.sessionStorage.getItem("logged_user") === undefined ||
+    window.sessionStorage.getItem("logged_user") === "null"
+  ) {
+    window.sessionStorage.setItem("message", "Please log in.");
+    window.location.replace("connexion.html");
+  }
+}
+
 const adminBody = document.getElementById("admin-page");
 if (adminBody) {
-  console.log(window.sessionStorage.getItem("logged_user_role"));
+  //console.log(window.sessionStorage.getItem("logged_user_role"));
   if (window.sessionStorage.getItem("logged_user_role") === "admin") {
     displayPresenceTable();
     displayUserTable();
@@ -385,7 +405,7 @@ if (adminBody) {
     displayPresenceTable();
   } else {
     window.sessionStorage.setItem("message", "Unauthorized Access");
-    window.location.replace("index.html");
+    window.location.replace("connexion.html");
   }
 }
 
@@ -459,17 +479,12 @@ function rejectPresence(id) {
 const deconnexionButton = document.getElementById("nav-deconnexion");
 if (deconnexionButton) {
   deconnexionButton.addEventListener("click", () => {
+    if (window.sessionStorage.getItem("logged_user") !== "null") {
+      window.sessionStorage.setItem("message", "Deconnecté");
+    }
     window.sessionStorage.setItem("logged_user", null);
     window.sessionStorage.setItem("logged_user_id", null);
     window.sessionStorage.setItem("logged_user_role", null);
-    window.sessionStorage.setItem("message", "Deconnecté");
     window.location.replace("connexion.html");
   });
-}
-
-const flashMessage = document.getElementById("flash-message");
-if (flashMessage) {
-  if (window.sessionStorage.getItem("message"))
-    flashMessage.innerText = window.sessionStorage.getItem("message");
-  window.sessionStorage.setItem("message", "");
 }
