@@ -120,6 +120,58 @@ if (userConnButton) {
 
 // INSCRIPTION
 
+function checkPass(value) {
+  let reg =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+
+  if (value.match(reg)) return "";
+  let msg = "Password error: ";
+  reg = /(?=.*[a-z])/;
+  if (!value.match(reg)) msg += "Must contain lowercase letter. ";
+  reg = /(?=.*[A-Z])/;
+  if (!value.match(reg)) msg += "Must contain uppercase letter. ";
+  reg = /(?=.*\d)/;
+  if (!value.match(reg)) msg += "Must contain a number. ";
+  reg = /(?=.*[@.#$!%*?&])/;
+  if (!value.match(reg))
+    msg += "Must contain a special character: @.#$!%*?& . ";
+  reg = /[A-Za-z\d@.#$!%*?&]{8,15}/;
+  if (!value.match(reg))
+    msg += "Must have atleast 8 characters and maximum 15. ";
+  return msg;
+}
+
+const userRegLogin = document.getElementById("user-register-login");
+if (userRegLogin) {
+  userRegLogin.addEventListener("keyup", () => {
+    const loginError = document.getElementById("user-conn-login-error");
+    //console.log(userRegLogin.value);
+    if (!checkLogin(userRegLogin.value)) {
+      loginError.innerText =
+        "Username must be a valid email with laplatforme.io domain";
+    } else loginError.innerText = "";
+  });
+}
+
+const userRegPass = document.getElementById("user-register-pass");
+if (userRegPass) {
+  userRegPass.addEventListener("keyup", () => {
+    const loginError = document.getElementById("user-conn-pass-error");
+    //console.log(userRegPass.value);
+    loginError.innerText = checkPass(userRegPass.value);
+  });
+}
+
+const userRegConfPass = document.getElementById("user-register-pass-conf");
+if (userRegConfPass) {
+  userRegConfPass.addEventListener("keyup", () => {
+    const loginError = document.getElementById("user-conn-pass-error");
+    //console.log(userRegPass.value);
+    if (userRegPass.value !== userRegConfPass.value)
+      loginError.innerText = "Passwords do not match.";
+  });
+}
+
 function checkRegister(userLogin, userPassword, userPasswordConf) {
   if (userPassword.value !== userPasswordConf.value) {
     window.sessionStorage.setItem("message", "Passwords do not match.");
@@ -169,11 +221,25 @@ if (dateButton) {
       window.sessionStorage.getItem("logged_user_id"),
       datePick.value
     );
+    window.sessionStorage.setItem(
+      "message",
+      "Date " +
+        datePick.value +
+        " added for " +
+        window.sessionStorage.getItem("logged_user")
+    );
     console.log(JSON.parse(window.sessionStorage.getItem("presence-list")));
   });
 }
 
 /// ADMIN
+
+const curr_date = new Date();
+const year = curr_date.getFullYear();
+const month = String(curr_date.getMonth() + 1).padStart(2, "0");
+const day = String(curr_date.getDate()).padStart(2, "0");
+
+const today = year + "-" + "month" + "day";
 
 function createPresence(elem) {
   let row = document.createElement("tr");
@@ -184,21 +250,52 @@ function createPresence(elem) {
   let date = document.createElement("td");
   date.innerText = elem["date"];
   let status = document.createElement("td");
-  status.innerText = elem["id"];
+  status.innerText = elem["status"];
   let accept = document.createElement("td");
   let accept_button = document.createElement("button");
   accept_button.innerText = "ACCEPT";
+  accept_button.classList.add(
+    "sm:rounded-xl",
+    "bg-green-200",
+    "p-0",
+    "sm:p-2",
+    "hover:bg-green-300"
+  );
   accept.appendChild(accept_button);
   let reject = document.createElement("td");
   let reject_button = document.createElement("button");
   reject_button.innerText = "REJECT";
+  reject_button.classList.add(
+    "sm:rounded-xl",
+    "bg-red-200",
+    "p-0",
+    "sm:p-2",
+    "hover:bg-red-300"
+  );
   reject.appendChild(reject_button);
   row.appendChild(id);
   row.appendChild(user_id);
   row.appendChild(date);
   row.appendChild(status);
-  row.appendChild(accept);
-  row.appendChild(reject);
+  if (elem["date"] > today) {
+    row.appendChild(accept);
+    row.appendChild(reject);
+  }
+
+  accept_button.addEventListener("click", () => {
+    //const parent = event.target.parentElement;
+    /* console.log("promote");
+    console.log(id.innerText); */
+    acceptPresence(parseInt(id.innerText));
+    displayPresenceTable();
+  });
+  reject_button.addEventListener("click", () => {
+    //const parent = event.target.parentElement;
+    /*  console.log("promote");
+    console.log(id.innerText); */
+    rejectPresence(parseInt(id.innerText));
+    displayPresenceTable();
+  });
   return row;
 }
 
@@ -214,44 +311,90 @@ function createUser(elem) {
   let promote_button = document.createElement("button");
   promote_button.innerText = "PROMOTE";
   promote_button.classList.add("promote");
-  promote_button.addEventListener("click", (event) => {
-    const parent = event.target.parentElement;
-    conso;
-    promoteUser(parseInt(parent.firstChild.innerText));
-  });
+  promote_button.classList.add(
+    "sm:rounded-xl",
+    "bg-green-200",
+    "p-0",
+    "sm:p-2",
+    "hover:bg-green-300"
+  );
   promote.appendChild(promote_button);
   let demote = document.createElement("td");
   let demote_button = document.createElement("button");
   demote_button.innerText = "DEMOTE";
   demote_button.classList.add("demote");
+  demote_button.classList.add(
+    "sm:rounded-xl",
+    "bg-red-200",
+    "p-0",
+    "sm:p-2",
+    "hover:bg-red-300"
+  );
   demote.appendChild(demote_button);
   row.appendChild(id);
   row.appendChild(login);
   row.appendChild(role);
   row.appendChild(promote);
   row.appendChild(demote);
+
+  promote_button.addEventListener("click", () => {
+    //const parent = event.target.parentElement;
+    /*  console.log("promote");
+    console.log(id.innerText); */
+    promoteUser(parseInt(id.innerText));
+    displayUserTable();
+  });
+  demote_button.addEventListener("click", () => {
+    //const parent = event.target.parentElement;
+    /*  console.log("promote");
+    console.log(id.innerText); */
+    demoteUser(parseInt(id.innerText));
+    displayUserTable();
+  });
   return row;
 }
 
-const adminBody = document.getElementById("admin-page");
-if (adminBody) {
+function displayPresenceTable() {
   const presenceTable = document.getElementById("presence-list");
+  presenceTable.innerHTML = "";
   for (let elem of JSON.parse(window.sessionStorage.getItem("presence-list"))) {
     presenceTable.appendChild(createPresence(elem));
   }
+}
 
+function displayUserTable() {
   const userTable = document.getElementById("user-list");
+  userTable.innerHTML = "";
   for (let elem of JSON.parse(window.sessionStorage.getItem("user-list"))) {
     //console.log(elem);
     userTable.appendChild(createUser(elem));
   }
 }
 
+const adminBody = document.getElementById("admin-page");
+if (adminBody) {
+  console.log(window.sessionStorage.getItem("logged_user_role"));
+  if (window.sessionStorage.getItem("logged_user_role") === "admin") {
+    displayPresenceTable();
+    displayUserTable();
+  } else if (
+    window.sessionStorage.getItem("logged_user_role") === "moderator"
+  ) {
+    const userTable = document.getElementById("user-table");
+    userTable.remove();
+    displayPresenceTable();
+  } else {
+    window.sessionStorage.setItem("message", "Unauthorized Access");
+    window.location.replace("index.html");
+  }
+}
+
 function promoteUser(id) {
-  console.log("ICI " + id);
+  //console.log("ICI " + id);
   let userList = JSON.parse(window.sessionStorage.getItem("user-list"));
   for (let elem of userList) {
-    if (elem["id"] === id) {
+    //console.log(elem["id"], id);
+    if (elem["id"] == id) {
       if (elem["role"] === "user") {
         elem["role"] = "moderator";
       } else if (elem["role"] === "moderator") {
@@ -263,4 +406,70 @@ function promoteUser(id) {
     }
   }
   window.sessionStorage.setItem("user-list", JSON.stringify(userList));
+}
+
+function demoteUser(id) {
+  //console.log("ICI " + id);
+  let userList = JSON.parse(window.sessionStorage.getItem("user-list"));
+  for (let elem of userList) {
+    //console.log(elem["id"], id);
+    if (elem["id"] == id) {
+      if (elem["role"] === "moderator") {
+        elem["role"] = "user";
+      } else if (elem["role"] === "admin") {
+        elem["role"] = "moderator";
+      } else if (elem["role"] === "user") {
+        return;
+      } else elem["role"] = "user";
+      break;
+    }
+  }
+  window.sessionStorage.setItem("user-list", JSON.stringify(userList));
+}
+
+function acceptPresence(id) {
+  //console.log("ICI " + id);
+  let presenceList = JSON.parse(window.sessionStorage.getItem("presence-list"));
+  for (let elem of presenceList) {
+    //console.log(elem["id"], id);
+    if (elem["id"] == id) {
+      elem["status"] = "accepted";
+      console.log(elem);
+      break;
+    }
+  }
+  window.sessionStorage.setItem("presence-list", JSON.stringify(presenceList));
+}
+
+function rejectPresence(id) {
+  //console.log("ICI " + id);
+  let presenceList = JSON.parse(window.sessionStorage.getItem("presence-list"));
+  for (let elem of presenceList) {
+    //console.log(elem["id"], id);
+    if (elem["id"] == id) {
+      elem["status"] = "rejected";
+      break;
+    }
+  }
+  window.sessionStorage.setItem("presence-list", JSON.stringify(presenceList));
+}
+
+// DECONNEXION
+
+const deconnexionButton = document.getElementById("nav-deconnexion");
+if (deconnexionButton) {
+  deconnexionButton.addEventListener("click", () => {
+    window.sessionStorage.setItem("logged_user", null);
+    window.sessionStorage.setItem("logged_user_id", null);
+    window.sessionStorage.setItem("logged_user_role", null);
+    window.sessionStorage.setItem("message", "Deconnecté");
+    window.location.replace("connexion.html");
+  });
+}
+
+const flashMessage = document.getElementById("flash-message");
+if (flashMessage) {
+  if (window.sessionStorage.getItem("message"))
+    flashMessage.innerText = window.sessionStorage.getItem("message");
+  window.sessionStorage.setItem("message", "");
 }

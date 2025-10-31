@@ -8,8 +8,31 @@
     <script src="js/script.js" defer></script>
   </head>
   <body id="admin-page">
-    <div>
-      <table>
+    <header class="h-1/6 bg-blue-700 w-100vh">
+      <ul class="flex flex-col md:flex-row md:justify-around items-center">
+        <li class="p-2 hover:bg-blue-200">
+          <a href="index.html">Home Page</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="admin.html">Admin Page</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="connexion.html">Connexion</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="inscription.html">Inscription</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a id="nav-deconnexion" href="#">Deconnexion</a>
+        </li>
+      </ul>
+      <p id="flash-message" class="bg-red-300 text-center"></p>
+    </header>
+    <div class="text-xs md:text-base">
+      <table
+        id="presence-table"
+        class="border border-black w-100vw sm:w-9/10 my-4 mx-auto text-center"
+      >
         <thead>
           <tr>
             <th>ID</th>
@@ -23,8 +46,10 @@
         <tbody id="presence-list"></tbody>
       </table>
     </div>
-    <div>
-      <table>
+    <div class="text-xs md:text-base" id="user-table">
+      <table
+        class="border border-black w-100vw sm:w-9/10 my-4 mx-auto text-center"
+      >
         <thead>
           <tr>
             <th>ID</th>

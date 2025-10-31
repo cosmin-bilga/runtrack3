@@ -8,16 +8,59 @@
     <script src="js/script.js" defer></script>
   </head>
   <body>
-    <h1>Inscription</h1>
+    <header class="h-1/6 bg-blue-700 w-100vh">
+      <ul class="flex flex-col md:flex-row md:justify-around items-center">
+        <li class="p-2 hover:bg-blue-200">
+          <a href="index.html">Home Page</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="admin.html">Admin Page</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="connexion.html">Connexion</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a href="inscription.html">Inscription</a>
+        </li>
+        <li class="p-2 hover:bg-blue-200">
+          <a id="nav-deconnexion" href="#">Deconnexion</a>
+        </li>
+      </ul>
+      <p id="flash-message" class="bg-red-300 text-center"></p>
+    </header>
+
     <div>
-      <p id="user-conn-login-error"></p>
-      <p id="user-conn-pass-error"></p>
+      <p class="text-center bg-orange-300" id="user-conn-login-error"></p>
+      <p class="text-center bg-orange-300" id="user-conn-pass-error"></p>
     </div>
-    <div>
-      <input type="text" id="user-register-login" />
-      <input type="password" id="user-register-pass" />
-      <input type="password" id="user-register-pass-conf" />
-      <button id="user-register-submit">Connect</button>
+    <div
+      class="flex flex-col items-center rounded-3xl p-4 bg-blue-200 w-100vh md:w-1/2 mx-auto gap-3 mt-4"
+    >
+      <h1 class="text-center text-bolder text-lg">Inscription</h1>
+      <input
+        class="p-2 border border-gray-200 rounded-xl bg-white"
+        type="text"
+        id="user-register-login"
+        placeholder="Login Email"
+      />
+      <input
+        class="p-2 border border-gray-200 rounded-xl bg-white"
+        type="password"
+        id="user-register-pass"
+        placeholder="Password"
+      />
+      <input
+        class="p-2 border border-gray-200 rounded-xl bg-white"
+        type="password"
+        id="user-register-pass-conf"
+        placeholder="Password Confirm"
+      />
+      <button
+        class="p-2 border border-gray-200 rounded-xl bg-white hover:bg-gray-200"
+        id="user-register-submit"
+      >
+        Register
+      </button>
     </div>
   </body>
 </html>
